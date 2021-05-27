@@ -1,0 +1,12 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: llpfs
+spec:
+  tls:
+    termination: edge
+  to:
+    kind: Service
+    name: kisoong-leo-assignment
+    weight: 100
+  wildcardPolicy: None
