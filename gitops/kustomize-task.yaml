@@ -1,0 +1,28 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: kustomize-build
+spec:
+  workspaces:
+    - name: source
+      description: contains the cloned git repo
+  params:
+    - name: image-with-tag
+      type: string
+      default: "iamge:tag"
+  steps:
+    - name: kustomize-build
+      image: docker.io/enzobarrett/kustomize:latest
+      script: |
+        #!/bin/sh
+        cd source/k8s
+        kustomize edit set image $(params.image-with-tag)
+        kustomize build > manifests.yaml       
+        if [ -f manifests.yaml ]; then
+          echo "---"
+          cat manifests.yaml
+          echo "manifests.yaml successfully generated @ ${pwd}"
+        else
+          echo "ERROR: manifests.yaml not generated"
+          exit 1
+        fi
