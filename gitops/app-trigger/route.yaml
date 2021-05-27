@@ -1,0 +1,11 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: kisoong-leo-el-route
+spec:
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: el-kisoong-leo-fps
+    weight: 100

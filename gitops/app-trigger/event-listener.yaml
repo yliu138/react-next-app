@@ -1,0 +1,11 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: kisoong-leo-fps
+spec:
+  serviceAccountName: tekton-triggers-sa
+  triggers:
+    - bindings:
+        - ref: kisoong-leo-pipeline-react-next-pipeline-triggerbinding
+      template:
+        name: kisoong-leo-pipeline-react-next-triggertemplate
