@@ -1,0 +1,25 @@
+apiVersion: tekton.dev/v1alpha1
+kind: TaskRun
+metadata:
+  generateName: create-react-next-app-webhook-run-
+spec:
+  taskRef:
+    name: create-webhook
+  inputs:
+    params:
+    - name: GitHubOrg
+      value: "yliu138"
+    - name: GitHubUser
+      value: "yliu138"
+    - name: GitHubRepo
+      value: "react-next-app"
+    - name: GitHubSecretName
+      value: webhook-secret
+    - name: GitHubAccessTokenKey
+      value: token
+    - name: GitHubSecretStringKey
+      value: secret
+    - name: ExternalDomain
+      value: "http://kisoong-leo-el-route-leo-liu-pipeline-from-scratch.apac-bootcamp-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-east.containers.appdomain.cloud"
+  timeout: 1000s
+  serviceAccountName: tekton-triggers-createwebhook
