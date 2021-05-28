@@ -8,12 +8,12 @@ spec:
     name: kisoong-leo-react-next-pipeline
   workspaces:
     - name: pipeline-shared-data
-      # persistentVolumeClaim:
-      #   claimName: leo-liu-live-pvc-2nd
-      volumeClaimTemplate:
-        spec:
-          accessModes:
-            - ReadWriteOnce
-          resources:
-            requests:
-              storage: 1Gi
+      persistentVolumeClaim:
+        claimName: leo-liu-live-pvc-2nd
+      # volumeClaimTemplate:
+      #   spec:
+      #     accessModes:
+      #       - ReadWriteOnce
+      #     resources:
+      #       requests:
+      #         storage: 1Gi
