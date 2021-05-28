@@ -5,6 +5,7 @@ metadata:
 rules:
   - apiGroups:
       - tekton.dev
+      - triggers.tekton.dev
     resources:
       - eventlisteners
       - triggerbindings
@@ -12,12 +13,14 @@ rules:
       - pipelineresources
     verbs:
       - get
+      - list
   - apiGroups:
       - tekton.dev
     resources:
       - pipelineruns
       - pipelineresources
     verbs:
+      - get
       - create
   - apiGroups:
       - ""
@@ -25,6 +28,7 @@ rules:
       - configmaps
     verbs:
       - list
+      - get
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
